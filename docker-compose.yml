@@ -1,12 +1,20 @@
 services:
 
-    mongo:
-        container_name: mongo_db
+    mongo-auth:
+        container_name: mongo_db_auth
         image: mongo
         volumes:
           - mongo-data:/data/db
         ports:
           - "27017:27017"
+
+    mongo-rest:
+        container_name: mongo_db_rest
+        image: mongo
+        volumes:
+          - mongo-data-rest:/data/db
+        ports:
+          - "27018:27017"
           
     cvutchat-socket:
       container_name: cvutchat-socket
@@ -49,4 +57,5 @@ services:
             - cvutchat-socket
   
   volumes:
-    mongo-data:
+    mongo-data-auth:
+    mongo-data-rest:
