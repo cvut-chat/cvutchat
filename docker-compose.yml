@@ -41,7 +41,7 @@ services:
         container_name: cvutchat-auth
         build: ./cvutchat-auth
         ports:
-            - "3002:3002"
+            - "5000:5000"
         depends_on:
             - mongo-auth
         env_file:
