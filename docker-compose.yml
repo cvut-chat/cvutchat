@@ -1,0 +1,52 @@
+services:
+
+    mongo:
+        container_name: mongo_db
+        image: mongo
+        volumes:
+          - mongo-data:/data/db
+        ports:
+          - "27017:27017"
+          
+    cvutchat-socket:
+      container_name: cvutchat-socket
+      build: ./cvutchat-socket
+      ports:
+        - "3000:3000"
+      depends_on:
+        - mongo
+      environment:
+        MONGO_URI: mongodb://mongo:27017/mydb
+
+    cvutchat-rest:
+        container_name: cvutchat-rest
+        build: ./cvutchat-rest
+        ports:
+            - "3001:3001"
+        depends_on:
+            - mongo
+        environment:
+            MONGO_URI: mongodb://mongo:27017/mydb
+
+    cvutchat-auth:
+        container_name: cvutchat-auth
+        build: ./cvutchat-auth
+        ports:
+            - "3002:3002"
+        depends_on:
+            - mongo
+        environment:
+            MONGO_URI: mongodb://mongo:27017/mydb
+
+    cvutchat-frontend:
+        container_name: cvutchat-frontend
+        build: ./cvutchat-frontend
+        ports:
+            - "3003:3003"
+        depends_on:
+            - cvutchat-rest
+            - cvutchat-auth
+            - cvutchat-socket
+  
+  volumes:
+    mongo-data:
