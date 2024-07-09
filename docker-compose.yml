@@ -22,10 +22,10 @@ services:
       ports:
         - "3000:3000"
       depends_on:
-        - mongo
-      environment:
-        AUTH_DB_URI: mongodb://mongo:27017/mydb
-        REST_DB_URI: mongodb://mongo:27018/mydb
+        - mongo-auth
+        - mongo-rest
+      env_file:
+        - cvutchat-socket/.env
 
     cvutchat-rest:
         container_name: cvutchat-rest
@@ -33,9 +33,9 @@ services:
         ports:
             - "3001:3001"
         depends_on:
-            - mongo
-        environment:
-            REST_DB_URI: mongodb://mongo:27018/mydb
+            - mongo-rest
+        env_file:
+            - cvutchat-rest/.env
 
     cvutchat-auth:
         container_name: cvutchat-auth
@@ -43,9 +43,9 @@ services:
         ports:
             - "3002:3002"
         depends_on:
-            - mongo
-        environment:
-            AUTH_DB_URI: mongodb://mongo:27017/mydb
+            - mongo-auth
+        env_file:
+            - cvutchat-auth/.env
 
     cvutchat-frontend:
         container_name: cvutchat-frontend
