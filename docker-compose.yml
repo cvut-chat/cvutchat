@@ -16,7 +16,7 @@ services:
         ports:
           - "27018:27017"
           
-    cvutchat-socket:
+    socket:
       container_name: cvutchat-socket
       build: ./cvutchat-socket
       ports:
@@ -27,7 +27,7 @@ services:
       env_file:
         - cvutchat-socket/.env
 
-    cvutchat-rest:
+    rest:
         container_name: cvutchat-rest
         build: ./cvutchat-rest
         ports:
@@ -37,7 +37,7 @@ services:
         env_file:
             - cvutchat-rest/.env
 
-    cvutchat-auth:
+    auth:
         container_name: cvutchat-auth
         build: ./cvutchat-auth
         ports:
@@ -47,7 +47,7 @@ services:
         env_file:
             - cvutchat-auth/.env
 
-    cvutchat-frontend:
+    frontend:
         container_name: cvutchat-frontend
         build: ./cvutchat-frontend
         ports:
