@@ -6,37 +6,37 @@
       "repositories": {
         "cvut-chat/cvutchat": {
           "permissions": {
-            "issues": "write"
+            "permissions": "write-all"
           }
         },
         "cvut-chat/cvutchat-data": {
           "permissions": {
-            "issues": "write"
+            "permissions": "write-all"
           }
         },
         "cvut-chat/cvutchat-auth": {
           "permissions": {
-            "issues": "write"
+            "permissions": "write-all"
           }
         },
         "cvut-chat/cvutchat-rest": {
           "permissions": {
-            "issues": "write"
+            "permissions": "write-all"
           }
         },
         "cvut-chat/cvutchat-socket": {
           "permissions": {
-            "issues": "write"
+            "permissions": "write-all"
           }
         },
         "cvut-chat/cvutchat-weather": {
           "permissions": {
-            "issues": "write"
+            "permissions": "write-all"
           }
         },
         "cvut-chat/cvutchat-frontend": {
           "permissions": {
-            "issues": "write"
+            "permissions": "write-all"
           }
         }
       }
