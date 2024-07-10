@@ -5,39 +5,25 @@
     "codespaces": {
       "repositories": {
         "cvut-chat/cvutchat": {
-          "permissions": {
-            "permissions": "write-all"
-          }
+          "permissions": "write-all"
         },
         "cvut-chat/cvutchat-data": {
-          "permissions": {
-            "permissions": "write-all"
-          }
+          "permissions": "write-all"
         },
         "cvut-chat/cvutchat-auth": {
-          "permissions": {
-            "permissions": "write-all"
-          }
+          "permissions": "write-all"
         },
         "cvut-chat/cvutchat-rest": {
-          "permissions": {
-            "permissions": "write-all"
-          }
+          "permissions": "write-all"
         },
         "cvut-chat/cvutchat-socket": {
-          "permissions": {
-            "permissions": "write-all"
-          }
+          "permissions": "write-all"
         },
         "cvut-chat/cvutchat-weather": {
-          "permissions": {
-            "permissions": "write-all"
-          }
+          "permissions": "write-all"
         },
         "cvut-chat/cvutchat-frontend": {
-          "permissions": {
-            "permissions": "write-all"
-          }
+          "permissions": "write-all"
         }
       }
     }
