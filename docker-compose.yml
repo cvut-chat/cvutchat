@@ -1,20 +1,12 @@
 services:
 
-    mongo-auth:
-        container_name: mongo_db_auth
+    mongo:
+        container_name: mongo_db
         image: mongo
         volumes:
-          - mongo-data-auth:/data/db
+          - mongo-data:/data/db
         ports:
           - "27017:27017"
-
-    mongo-rest:
-        container_name: mongo_db_rest
-        image: mongo
-        volumes:
-          - mongo-data-rest:/data/db
-        ports:
-          - "27018:27017"
 
     data:
         container_name: cvutchat-data
@@ -22,8 +14,7 @@ services:
         ports:
             - "3002:3002"
         depends_on:
-            - mongo-auth
-            - mongo-rest
+            - mongo
         env_file:
             - cvutchat-data/.env
 
@@ -71,5 +62,4 @@ services:
             - auth
   
 volumes:
-  mongo-data-auth:
-  mongo-data-rest:
+  mongo-data:
