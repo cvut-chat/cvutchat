@@ -20,7 +20,7 @@ docker compose up -d
 ## DEV
 ### Testing API
 ```bash
-curl -X POST http://localhost:5000/api/auth/register \
+curl -X POST http://localhost:5002/api/auth/register \
      -H "Content-Type: application/json" \
      -d '{"username": "newUser", "password": "password123"}'
 ```

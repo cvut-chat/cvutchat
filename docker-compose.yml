@@ -12,8 +12,6 @@ services:
   data:
     container_name: cvutchat-data
     build: ./cvutchat-data
-    ports:
-      - "5000:5000"
     depends_on:
       - mongo
     env_file:
@@ -31,7 +29,7 @@ services:
     container_name: cvutchat-auth
     build: ./cvutchat-auth
     ports:
-      - "5002:5000"
+      - "5002:80"
     depends_on:
       - rest
 
