@@ -1,4 +1,4 @@
-# cvutchat
+# CVUT Chat
 
 ## Installation
 
@@ -11,3 +11,6 @@ git clone https://github.com/cvut-chat/cvutchat-auth
 git clone https://github.com/cvut-chat/cvutchat-frontend
 docker compose up
 ```
+
+## How it works
+![Diagram](https://i.imgur.com/haYP5mz.png)
