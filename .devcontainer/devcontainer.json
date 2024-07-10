@@ -1,0 +1,46 @@
+{
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "features": {
+  }
+  "customizations": {
+    "codespaces": {
+      "repositories": {
+        "cvut-chat/cvutchat": {
+          "permissions": {
+            "issues": "write"
+          }
+      "repositories": {
+        "cvut-chat/cvutchat-data": {
+          "permissions": {
+            "issues": "write"
+          }
+      "repositories": {
+        "cvut-chat/cvutchat-auth": {
+          "permissions": {
+            "issues": "write"
+          }
+      "repositories": {
+        "cvut-chat/cvutchat-rest": {
+          "permissions": {
+            "issues": "write"
+          }
+      "repositories": {
+        "cvut-chat/cvutchat-socket": {
+          "permissions": {
+            "issues": "write"
+          }
+      "repositories": {
+        "cvut-chat/cvutchat-weather": {
+          "permissions": {
+            "issues": "write"
+          }
+      "repositories": {
+        "cvut-chat/cvutchat-frontend": {
+          "permissions": {
+            "issues": "write"
+          }
+        }
+      }
+    }
+  }
+}
