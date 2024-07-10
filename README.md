@@ -16,3 +16,11 @@ docker compose up -d
 
 ## How it works
 ![Diagram](https://i.imgur.com/kZ4WNPT.png)
+
+## DEV
+### Testing API
+```bash
+curl -X POST http://localhost:5000/api/auth/register \
+     -H "Content-Type: application/json" \
+     -d '{"username": "newUser", "password": "password123"}'
+```

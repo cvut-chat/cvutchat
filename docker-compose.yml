@@ -5,6 +5,7 @@ services:
     image: mongo
     volumes:
       - mongo-data:/data/db
+      - ./cvutchat-data/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js
     ports:
       - "27017:27017"
 
@@ -12,7 +13,7 @@ services:
     container_name: cvutchat-data
     build: ./cvutchat-data
     ports:
-      - "3002:3002"
+      - "5000:5000"
     depends_on:
       - mongo
     env_file:
@@ -30,7 +31,7 @@ services:
     container_name: cvutchat-auth
     build: ./cvutchat-auth
     ports:
-      - "5000:5000"
+      - "5002:5000"
     depends_on:
       - rest
 
@@ -38,7 +39,7 @@ services:
     container_name: cvutchat-socket
     build: ./cvutchat-socket
     ports:
-      - "3000:3000"
+      - "3002:3000"
     depends_on:
       - rest
 
