@@ -15,17 +15,17 @@ services:
           - mongo-data-rest:/data/db
         ports:
           - "27018:27017"
-          
-    socket:
-      container_name: cvutchat-socket
-      build: ./cvutchat-socket
-      ports:
-        - "3000:3000"
-      depends_on:
-        - mongo-auth
-        - mongo-rest
-      env_file:
-        - cvutchat-socket/.env
+
+    data:
+        container_name: cvutchat-data
+        build: ./cvutchat-data
+        ports:
+            - "3002:3002"
+        depends_on:
+            - mongo-auth
+            - mongo-rest
+        env_file:
+            - cvutchat-data/.env
 
     rest:
         container_name: cvutchat-rest
@@ -33,9 +33,16 @@ services:
         ports:
             - "3001:3001"
         depends_on:
-            - mongo-rest
-        env_file:
-            - cvutchat-rest/.env
+            - data
+          
+    socket:
+      container_name: cvutchat-socket
+      build: ./cvutchat-socket
+      ports:
+        - "3000:3000"
+      depends_on:
+        - auth
+        - rest
 
     auth:
         container_name: cvutchat-auth
@@ -43,9 +50,16 @@ services:
         ports:
             - "5000:5000"
         depends_on:
-            - mongo-auth
-        env_file:
-            - cvutchat-auth/.env
+            - socket
+            - rest
+
+    weather:
+        container_name: cvutchat-weather
+        build: ./cvutchat-weather
+        ports:
+            - "3003:3003"
+        depends_on:
+            - rest
 
     frontend:
         container_name: cvutchat-frontend
@@ -55,7 +69,6 @@ services:
         depends_on:
             - rest
             - auth
-            - socket
   
 volumes:
   mongo-data-auth:
