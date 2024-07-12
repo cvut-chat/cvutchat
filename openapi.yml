@@ -1,0 +1,280 @@
+openapi: 3.0.0
+info:
+  title: CVUT CHAT
+  version: 1.0.0
+  description: API for a chat message application
+servers:
+  - url: http://localhost:3000/api
+    description: Local server
+
+paths:
+  /register:
+    post:
+      summary: Register a new user
+      requestBody:
+        description: User registration data
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+              required:
+                - username
+                - password
+      responses:
+        '201':
+          description: User registered successfully
+        '400':
+          description: Invalid input
+
+  /login:
+    post:
+      summary: Log in a user
+      requestBody:
+        description: User login data
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+              required:
+                - username
+                - password
+      responses:
+        '200':
+          description: User logged in successfully
+        '401':
+          description: Invalid credentials
+
+  /users:
+    get:
+      summary: Get a batch of users
+      parameters:
+        - in: query
+          name: ids
+          schema:
+            type: array
+            items:
+              type: string
+          description: Array of user IDs
+      responses:
+        '200':
+          description: List of users
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    _id:
+                      type: string
+                    username:
+                      type: string
+
+  /users/me:
+    get:
+      summary: Get current user
+      responses:
+        '200':
+          description: Current user data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _id:
+                    type: string
+                  username:
+                    type: string
+
+  /rooms:
+    get:
+      summary: Get list of rooms
+      responses:
+        '200':
+          description: List of rooms
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    _id:
+                      type: string
+                    name:
+                      type: string
+                    users:
+                      type: array
+                      items:
+                        type: string
+                    createdAt:
+                      type: string
+                      format: date-time
+                    updatedAt:
+                      type: string
+                      format: date-time
+
+    post:
+      summary: Create a new room
+      requestBody:
+        description: Room creation data
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                users:
+                  type: array
+                  items:
+                    type: string
+              required:
+                - users
+      responses:
+        '201':
+          description: Room created successfully
+        '400':
+          description: Invalid input
+
+  /rooms/{roomId}/messages:
+    get:
+      summary: Get message history for a room
+      parameters:
+        - in: path
+          name: roomId
+          required: true
+          schema:
+            type: string
+          description: ID of the room
+      responses:
+        '200':
+          description: List of messages
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    _id:
+                      type: string
+                    from:
+                      type: string
+                    room:
+                      type: string
+                    content:
+                      type: string
+                    createdAt:
+                      type: string
+                      format: date-time
+                    updatedAt:
+                      type: string
+                      format: date-time
+
+  /rooms/{roomId}/messages/send:
+    post:
+      summary: Send a message to a room
+      parameters:
+        - in: path
+          name: roomId
+          required: true
+          schema:
+            type: string
+          description: ID of the room
+      requestBody:
+        description: Message data
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                from:
+                  type: string
+                content:
+                  type: string
+              required:
+                - from
+                - content
+      responses:
+        '201':
+          description: Message sent successfully
+        '400':
+          description: Invalid input
+
+  /weather:
+    get:
+      summary: Get the current weather
+      parameters:
+        - in: query
+          name: location
+          required: true
+          schema:
+            type: string
+          description: Location to get weather for
+      responses:
+        '200':
+          description: Current weather data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  location:
+                    type: string
+                  temperature:
+                    type: number
+                  description:
+                    type: string
+
+components:
+  schemas:
+    IMessage:
+      type: object
+      properties:
+        from:
+          type: string
+        room:
+          type: string
+        content:
+          type: string
+        _id:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+
+    IRoom:
+      type: object
+      properties:
+        users:
+          type: array
+          items:
+            type: string
+        name:
+          type: string
+        _id:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
