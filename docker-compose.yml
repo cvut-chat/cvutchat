@@ -21,39 +21,31 @@ services:
     container_name: cvutchat-rest
     build: ./cvutchat-rest
     ports:
-      - "3001:3001"
+      - "80:80"
     depends_on:
       - data
   
   auth:
     container_name: cvutchat-auth
     build: ./cvutchat-auth
-    ports:
-      - "5002:80"
     depends_on:
       - rest
 
   socket:
     container_name: cvutchat-socket
     build: ./cvutchat-socket
-    ports:
-      - "3002:3000"
     depends_on:
       - rest
 
   weather:
     container_name: cvutchat-weather
     build: ./cvutchat-weather
-    ports:
-      - "3003:3003"
     depends_on:
       - rest
 
   frontend:
     container_name: cvutchat-frontend
     build: ./cvutchat-frontend
-    ports:
-      - "80:3000"
     depends_on:
       - rest
       - auth
