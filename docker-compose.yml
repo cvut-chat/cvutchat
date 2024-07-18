@@ -6,8 +6,6 @@ services:
     volumes:
       - mongo-data:/data/db
       - ./cvutchat-data/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js
-    ports:
-      - "27017:27017"
 
   data:
     container_name: cvutchat-data
@@ -34,6 +32,8 @@ services:
   socket:
     container_name: cvutchat-socket
     build: ./cvutchat-socket
+    ports:
+      - "8080:8080"
     depends_on:
       - rest
 
