@@ -16,3 +16,15 @@ docker compose up -d
 
 ## How it works
 ![Diagram](https://i.imgur.com/kZ4WNPT.png)
+
+## Contributing
+### Update
+```bash
+git pull
+cd cvutchat-socket; git pull; cd ..
+cd cvutchat-rest; git pull; cd ..
+cd cvutchat-auth; git pull; cd ..
+cd cvutchat-weather; git pull; cd ..
+cd cvutchat-data; git pull; cd ..
+cd cvutchat-frontend; git pull; cd ..
+```
