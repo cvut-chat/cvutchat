@@ -28,3 +28,8 @@ cd cvutchat-weather; git pull; cd ..
 cd cvutchat-data; git pull; cd ..
 cd cvutchat-frontend; git pull; cd ..
 ```
+
+### Restart
+```bash
+docker compose down rest data auth socket; docker image rm cvutchat-socket; docker image rm cvutchat-rest; docker image rm cvutchat-data ;docker image rm cvutchat-auth ; docker compose up rest data auth socket
+```
